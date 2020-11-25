@@ -41,7 +41,7 @@
   <header id="header" class="header-tops">
     <div class="container">
 
-      <h1><a href="{{url_for('static', filename='index.html')}}">Something with Tumors</a></h1>
+      <h1><a href="{{url_for('static', filename='index.html')}}">Gray Insights</a></h1>
 
       <h2>Helping Classify Brain Tumors</h2>
 
@@ -73,15 +73,8 @@
         </div>
         <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
           <h3>Detecting The Tumors</h3>
-
-          <p class="font-italic">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua.
-          </p>
-
           <p>
-            Officiis eligendi itaque labore et dolorum mollitia officiis optio vero. Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor incidunt officia tempore. Et eius omnis.
-            Cupiditate ut dicta maxime officiis quidem quia. Sed et consectetur qui quia repellendus itaque neque. Aliquid amet quidem ut quaerat cupiditate. Ab et eum qui repellendus omnis culpa magni laudantium dolores.
+            We’re Gray Insights, a team of two developing an application to help detect and classify brain tumors. Every year in the United States there are an estimated 23,890 brain tumor cases. The survival rate of these patients depends on the correct diagnosis of the tumor so proper treatment can be given. Automated classification is able to help medical professionals when diagnosing patients with giving them insight and ideas regarding the classification of the tumor. Through the use of convolutional neural networks our model currently is able to return a probability that tumor is either a glioma, meningioma or pituitary.
           </p>
         </div>
       </div>
@@ -102,14 +95,14 @@
       <div class="row">
         <div class="col-lg-6">
 
-          <h2>Upload Image Here </h2>
+          <h2>Upload an Image here</h2>
           <form method=post enctype=multipart/form-data action = "#resume">
             <input type=file name=file>
             <input type=submit value=Upload>
           </form>
-          {% if prediction %}
-          <p> Prediction for input image is: {{ prediction }} </p>
-          {% endif %}
+          {% autoescape false %}
+          <p> <b>Prediction for input image is</b> {{ prediction }} </p>
+          {% endautoescape %}
 
         </div>
       </div>

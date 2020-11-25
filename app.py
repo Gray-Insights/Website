@@ -10,7 +10,7 @@ import numpy as np
 
 app = flask.Flask(__name__, template_folder='templates')
 
-model = keras.models.load_model("tumor_model.h5")
+model = keras.models.load_model("tumor_model2.h5")
 
 def callModel(img):
 
@@ -36,7 +36,7 @@ def main():
             img = skimage.io.imread(file)
 
             # Resize the image to match the input the model will accept
-            img = skimage.transform.resize(img, (180, 180))
+            img = skimage.transform.resize(img, (150, 150, 3))
 
             # Get prediction of image from classifier
             predictions = callModel(img)
@@ -44,7 +44,10 @@ def main():
             # Get the value of the prediction
             prediction = predictions[0]
 
-            return flask.render_template('index.html', prediction=str(prediction))
+            return flask.render_template('index.html', prediction =  "<br><b>Giloma:</b> "+str(round(prediction[0]*100, 5))+"%" +
+                                                                     "<br><b>Meningioma:</b> "+str(round(prediction[1]*100, 5))+"%" +
+                                                                     "<br><b>Pituitary:</b> "+str(round(prediction[3]*100, 5))+"%" +
+                                                                     "<br><b>No Tumor:</b> "+str(round(prediction[2]*100, 5))+"%")
 
     return(flask.render_template('index.html'))
 
