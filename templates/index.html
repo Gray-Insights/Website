@@ -108,7 +108,7 @@
           </form>
           {% autoescape false %}
           <p>{{ prediction }} </p>
-          <img src={{image}} width="250" height="250">
+          <img src={{image}} width="250" height="250" onerror="this.style.display='none'">
           {% endautoescape %}
 
         </div>
